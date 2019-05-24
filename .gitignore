@@ -1,0 +1,11 @@
+a.out
+rough.*
+temp.*
+*.code-workspace
+.vscode/*
+/*/.vscode/*
+/*/*/.vscode/*
+/*/*/*/.vscode/*
+/*/*/*/.vscode/*
+/*/*/*/*/.vscode/*
+
