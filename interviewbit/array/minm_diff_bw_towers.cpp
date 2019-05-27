@@ -86,7 +86,7 @@ int minm_diff(vector <int> &A, int k) {
             continue;
         }
 
-        if (abs(local_big - global_small ) < abs(global_big - local_small ) ){
+        if (abs(local_big - global_small ) < abs(global_big - local_small ) {
             global_big = local_big;
             cout << '+' << " " << global_small<<" " << global_big << " " << endl;
         }
