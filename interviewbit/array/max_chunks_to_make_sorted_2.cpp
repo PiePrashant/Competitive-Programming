@@ -62,22 +62,33 @@ return 0;
 int funct(vector<int> &A) {
     int n;
     n = A.size();
-    vector<pair<int,int>> v(n);
-    
-    for (int i = 0; i < A.size(); i++) {
-        v[i] = make_pair(A[i], i);
-    }
-    
-    sort(v.begin(), v.end());
-    
-    int ans = 0;
-    int max_i = 0;
-    for (int i = 0; i < n; i++) {
-        max_i = max(v[i].second, max_i);
-        if(max_i == i) {
-            ans++;
+    vector<int> left_max(n); 
+    vector<int> right_min(n);
+    int l_max = A[0], r_min = A[n - 1]; 
+
+    for (int i = 0; i  < n; i++) {
+        if (l_max < A[i]) {
+            l_max = A[i];
         }
-        
+        left_max[i] = l_max;
+    } 
+
+    for (int i = n - 1; i >= 0; i--) {
+        if (A[i] < r_min) {
+            r_min = A[i];
+        }
+        right_min[i] = r_min;
     }
-    return ans;
+
+    int chunks = 0;
+    for (int i = 0; i < n - 1; i++) {
+        if (left_max[i] <= right_min[i + 1]) {
+            chunks++;
+        }
+    }
+    // if (A[n-1] == left_max[n-1]) {
+    //     chunks++;
+    // }
+
+    return chunks + 1;
 }
